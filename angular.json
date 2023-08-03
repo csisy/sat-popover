@@ -21,7 +21,6 @@
           },
           "configurations": {
             "production": {
-              "project": "src/lib/ng-package.prod.json",
               "tsConfig": "src/lib/tsconfig.lib.prod.json"
             }
           }
