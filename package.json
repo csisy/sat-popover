@@ -16,7 +16,8 @@
     "format": "prettier --write *",
     "test": "ng test popover",
     "test:once": "ng test popover --watch=false",
-    "release": "ts-node tools/release.ts"
+    "release": "ts-node tools/release.ts",
+    "package": "npm pack dist/popover"
   },
   "type": "module",
   "private": true,
@@ -30,12 +31,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/csisy/popover.git"
+    "url": "git+https://github.com/csisy/sat-popover.git"
   },
   "bugs": {
-    "url": "https://github.com/csisy/popover/issues"
+    "url": "https://github.com/csisy/sat-popover/issues"
   },
-  "homepage": "https://github.com/csisy/popover#readme",
+  "homepage": "https://github.com/csisy/sat-popover#readme",
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/animations": "^16.0.0",

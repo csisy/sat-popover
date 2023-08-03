@@ -1,11 +1,11 @@
-import { AfterViewInit, Directive, HostListener, Input, OnDestroy } from '@angular/core';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { AfterViewInit, Directive, HostListener, Input, OnDestroy } from '@angular/core';
 import { of, Subject } from 'rxjs';
 import { delay, switchMap, takeUntil } from 'rxjs/operators';
-
 import { SatPopoverAnchor } from './popover.component';
 
 @Directive({
+  standalone: true,
   selector: '[satPopoverHover]'
 })
 export class SatPopoverHoverDirective implements AfterViewInit, OnDestroy {

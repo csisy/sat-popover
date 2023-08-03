@@ -1,50 +1,52 @@
+import { AnimationEvent } from '@angular/animations';
+import { A11yModule, ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y';
+import { BidiModule } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  Directive,
   ElementRef,
   EventEmitter,
   Inject,
   Input,
-  ViewChild,
-  ViewEncapsulation,
-  TemplateRef,
   OnInit,
   Optional,
   Output,
-  Directive,
+  TemplateRef,
+  ViewChild,
   ViewContainerRef,
-  AfterViewInit
+  ViewEncapsulation
 } from '@angular/core';
-import { AnimationEvent } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
-import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-
+import { SatPopoverAnchoringService } from './popover-anchoring.service';
 import { transformPopover } from './popover.animations';
 import {
-  getUnanchoredPopoverError,
   getInvalidHorizontalAlignError,
-  getInvalidVerticalAlignError,
-  getInvalidScrollStrategyError,
   getInvalidPopoverAnchorError,
+  getInvalidPopoverError,
   getInvalidSatPopoverAnchorError,
-  getInvalidPopoverError
+  getInvalidScrollStrategyError,
+  getInvalidVerticalAlignError,
+  getUnanchoredPopoverError
 } from './popover.errors';
-import {
-  SatPopoverScrollStrategy,
-  SatPopoverHorizontalAlign,
-  SatPopoverVerticalAlign,
-  VALID_SCROLL,
-  VALID_HORIZ_ALIGN,
-  VALID_VERT_ALIGN,
-  SatPopoverOpenOptions
-} from './types';
-import { SatPopoverAnchoringService } from './popover-anchoring.service';
 import { DEFAULT_TRANSITION } from './tokens';
+import {
+  SatPopoverHorizontalAlign,
+  SatPopoverOpenOptions,
+  SatPopoverScrollStrategy,
+  SatPopoverVerticalAlign,
+  VALID_HORIZ_ALIGN,
+  VALID_SCROLL,
+  VALID_VERT_ALIGN
+} from './types';
 
 const DEFAULT_OPEN_ANIMATION_START_SCALE = 0.3;
 const DEFAULT_CLOSE_ANIMATION_END_SCALE = 0.5;
 
 @Directive({
+  standalone: true,
   selector: '[satPopoverAnchor]',
   exportAs: 'satPopoverAnchor'
 })
@@ -78,6 +80,8 @@ export class SatPopoverAnchor implements AfterViewInit {
 }
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, OverlayModule, A11yModule, BidiModule],
   selector: 'sat-popover',
   encapsulation: ViewEncapsulation.None,
   animations: [transformPopover],

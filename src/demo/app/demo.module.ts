@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SatPopoverModule } from '@ncstate/sat-popover';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,6 +26,7 @@ import { TooltipDemo } from './tooltip/tooltip.component';
 import { SpeedDialDemo } from './speed-dial/speed-dial.component';
 import { InteractiveCloseDemo } from './interactive-close/interactive-close.component';
 import { AnchorReuseComponent } from './anchor-reuse/anchor-reuse.component';
+import { SatPopover, SatPopoverAnchor, SatPopoverHoverDirective } from '@ncstate/sat-popover';
 
 @NgModule({
   exports: [
@@ -64,7 +64,9 @@ export class DemoMaterialModule {}
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    SatPopoverModule,
+    SatPopoverAnchor,
+    SatPopoverHoverDirective,
+    SatPopover,
     FormsModule,
     ReactiveFormsModule
   ],
